@@ -1,0 +1,15 @@
+{
+  "name": "mcp_chain_engine",
+  "module": "index.ts",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
+  }
+}
