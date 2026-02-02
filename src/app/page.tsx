@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { askGemini } from "../server/actions";
+import { askGemini, askGeminiRecommendations } from "../server/actions/actions";
 
 export default function DashboardPage() {
   const [input, setInput] = useState("");
@@ -27,7 +27,9 @@ export default function DashboardPage() {
     setInput("");
     setIsLoading(true);
 
-    const result = await askGemini(userMessage);
+    const result = messages.length
+      ? await askGemini(userMessage)
+      : await askGeminiRecommendations();
 
     if ("text" in result && result.text) {
       setMessages((prev) => [...prev, { role: "ai", content: result.text! }]);
